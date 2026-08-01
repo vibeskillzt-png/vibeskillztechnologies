@@ -1,0 +1,443 @@
+/*
+    VIBESKILLZ WEB CSS File
+    Design Theme: Futuristic, Neon, Dark Tech
+    Author: AI Expert CSS Developer
+    Date: 2023-10-27 (Adjusted to current date context)
+*/
+
+/* --- CSS Variables (Custom Properties) for easy theme management --- */
+:root {
+    /* Primary Colors */
+    --color-background-dark: #0a0a0c; /* Very dark almost black */
+    --color-background-medium: #1a1a1e; /* Dark grey for sections/cards */
+    --color-text-primary: #e0e0e0; /* Light grey for main text */
+    --color-text-secondary: #aaffff; /* Light blue for secondary text/highlights */
+
+    /* Accent Colors (Neon) */
+    --color-accent-blue: #00f0ff; /* Electric blue */
+    --color-accent-purple: #d000ff; /* Vibrant purple */
+    --color-accent-green: #00ff99; /* Lime green */
+
+    /* Glow Effects */
+    --glow-blue: 0 0 8px rgba(0, 240, 255, 0.6), 0 0 16px rgba(0, 240, 255, 0.4), 0 0 24px rgba(0, 240, 255, 0.2);
+    --glow-purple: 0 0 8px rgba(208, 0, 255, 0.6), 0 0 16px rgba(208, 0, 255, 0.4), 0 0 24px rgba(208, 0, 255, 0.2);
+    --glow-green: 0 0 8px rgba(0, 255, 153, 0.6), 0 0 16px rgba(0, 255, 153, 0.4), 0 0 24px rgba(0, 255, 153, 0.2);
+    --text-glow-blue: 0 0 4px var(--color-accent-blue);
+    --text-glow-purple: 0 0 4px var(--color-accent-purple);
+
+    /* Spacing & Sizes */
+    --spacing-unit: 1rem; /* Base spacing unit */
+    --border-radius-soft: 4px; /* Slightly rounded corners */
+    --border-radius-hard: 8px; /* More rounded corners */
+    --font-size-base: 1rem; /* Base font size */
+}
+
+/* --- Global Resets & Base Styles --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box; /* Ensure padding and border are included in element's total width and height */
+    margin: 0; /* Remove default margins */
+    padding: 0; /* Remove default padding */
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+    font-size: 16px; /* Define base font size for rem units, for accessibility and scalability */
+}
+
+body {
+    /* Note: 'Orbitron', 'Electrolize', 'Space Mono' are custom fonts and need to be imported
+             e.g., via Google Fonts in the HTML <head> or with @import at the top of this CSS.
+             Montserrat is a good sans-serif fallback. */
+    font-family: 'Orbitron', 'Electrolize', 'Space Mono', 'Montserrat', sans-serif; /* Futuristic font stack with fallbacks */
+    background-color: var(--color-background-dark); /* Dark background for the whole page */
+    color: var(--color-text-primary); /* Primary text color */
+    line-height: 1.6; /* Improved readability for body text */
+    min-height: 100vh; /* Ensure body takes full viewport height, crucial for footer sticking to bottom */
+    display: flex; /* Use flexbox for body to manage overall layout easily (header, main, footer) */
+    flex-direction: column; /* Stack header, main, footer vertically */
+    overflow-x: hidden; /* Prevent horizontal scroll issues, especially with animations/shadows */
+}
+
+/* Add a subtle animation to the body background for a 'live' feel */
+body::before {
+    content: '';
+    position: fixed; /* Fixed position relative to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Two radial gradients for a dynamic, diffused light effect */
+    background-image: radial-gradient(circle at top left, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
+                      radial-gradient(circle at bottom right, rgba(208, 0, 255, 0.05) 0%, transparent 40%);
+    background-size: 80% 80%; /* Make gradients large and diffuse */
+    background-repeat: no-repeat;
+    animation: backgroundPulse 20s infinite alternate ease-in-out; /* Subtle pulse animation */
+    pointer-events: none; /* Ensure it doesn't block interactions with underlying content */
+    z-index: -1; /* Place behind all content to act as a background layer */
+}
+
+@keyframes backgroundPulse {
+    0% {
+        background-position: 0% 0%; /* Start position */
+        opacity: 0.8;
+    }
+    50% {
+        background-position: 100% 100%; /* Move to end position */
+        opacity: 1; /* Slightly brighter mid-animation */
+    }
+    100% {
+        background-position: 0% 0%; /* Return to start position */
+        opacity: 0.8;
+    }
+}
+
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif; /* Headings with a strong futuristic feel */
+    color: var(--color-accent-blue); /* Headings stand out with an accent color */
+    margin-bottom: var(--spacing-unit); /* Spacing below headings */
+    text-shadow: var(--text-glow-blue); /* Subtle text glow effect */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth transition for potential hovers/states */
+}
+
+h1 {
+    font-size: 3.5rem; /* Large primary heading */
+    text-align: center;
+    margin-top: 2rem;
+    letter-spacing: 0.1em; /* Wider letter spacing for impact */
+}
+
+h2 {
+    font-size: 2.5rem; /* Secondary heading */
+    margin-top: 2rem;
+    letter-spacing: 0.08em;
+}
+
+h3 {
+    font-size: 1.8rem; /* Tertiary heading */
+    margin-top: 1.5rem;
+    letter-spacing: 0.05em;
+}
+
+p {
+    margin-bottom: var(--spacing-unit); /* Spacing between paragraphs for readability */
+    font-size: var(--font-size-base);
+}
+
+a {
+    color: var(--color-accent-green); /* Default link color */
+    text-decoration: none; /* No underline by default for a cleaner look */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+a:hover,
+a:focus {
+    color: var(--color-accent-blue); /* Brighter color on hover/focus */
+    text-shadow: var(--text-glow-blue); /* Subtle glow on hover/focus */
+    outline: none; /* Remove default browser focus outline, custom focus-visible will be used */
+}
+
+/* --- Layout Structure --- */
+.container {
+    max-width: 1200px; /* Max width for main content to prevent overly wide lines */
+    margin: 0 auto; /* Center content horizontally */
+    padding: 0 calc(var(--spacing-unit) * 2); /* Horizontal padding inside the container */
+    width: 100%; /* Ensure it takes full width up to max-width */
+}
+
+header {
+    background-color: rgba(17, 17, 17, 0.8); /* Slightly transparent dark background */
+    padding: calc(var(--spacing-unit) * 1.5) 0;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.2); /* Subtle accent border at the bottom */
+    box-shadow: 0 4px 15px rgba(0, 240, 255, 0.1); /* Subtle shadow for depth */
+    position: sticky; /* Sticky header for navigation as user scrolls */
+    top: 0; /* Stick to the top of the viewport */
+    z-index: 1000; /* Ensure header stays on top of other content */
+    backdrop-filter: blur(5px); /* Glassmorphism effect for a modern feel */
+    -webkit-backdrop-filter: blur(5px); /* Safari support for backdrop-filter */
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between; /* Space out logo and navigation */
+    align-items: center; /* Vertically align items */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 calc(var(--spacing-unit) * 2);
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-accent-blue);
+    text-shadow: var(--text-glow-blue);
+    letter-spacing: 0.1em;
+    text-decoration: none; /* Ensure logo link is not underlined */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.logo:hover {
+    color: var(--color-accent-purple); /* Change color on hover */
+    text-shadow: var(--text-glow-purple); /* Change glow on hover */
+}
+
+nav ul {
+    list-style: none; /* Remove default bullet points */
+    display: flex; /* Horizontal navigation */
+    gap: calc(var(--spacing-unit) * 2); /* Space between nav items */
+}
+
+nav a {
+    color: var(--color-text-secondary);
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 0.5rem 0; /* Padding for click area */
+    position: relative; /* For the underline effect */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Position underline slightly below the text */
+    width: 0; /* Start with no width */
+    height: 2px;
+    background: var(--color-accent-blue);
+    box-shadow: var(--text-glow-blue); /* Underline glow */
+    transition: width 0.3s ease; /* Smooth expansion of the underline */
+}
+
+nav a:hover::after,
+nav a:focus::after {
+    width: 100%; /* Underline expands to full width on hover/focus */
+}
+
+main {
+    flex-grow: 1; /* Allow main content to take up available vertical space */
+    padding: calc(var(--spacing-unit) * 4) 0; /* Vertical padding for main content sections */
+}
+
+section {
+    padding: calc(var(--spacing-unit) * 3); /* Internal padding for section content */
+    margin-bottom: calc(var(--spacing-unit) * 4); /* Space between sections */
+    background-color: var(--color-background-medium); /* Darker background for individual sections */
+    border-radius: var(--border-radius-hard); /* Rounded corners for sections */
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.15); /* Subtle glowing shadow for sections */
+    position: relative; /* For potential background effects like the grid */
+    overflow: hidden; /* Hide overflowing elements within the section, e.g. for background patterns */
+    border: 1px solid rgba(0, 240, 255, 0.1); /* Subtle border for definition */
+}
+
+/* Add a subtle background grid/pattern to sections for a tech feel */
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Create a grid pattern using linear gradients */
+    background-image: linear-gradient(to right, rgba(0,240,255,0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(0,240,255,0.05) 1px, transparent 1px);
+    background-size: 40px 40px; /* Size of the grid cells */
+    opacity: 0.3; /* Subtle visibility */
+    z-index: 0; /* Ensure it's behind the section content */
+    pointer-events: none; /* Ensure it doesn't interfere with interactions */
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    position: relative;
+    z-index: 1; /* Ensure title is above grid pattern */
+}
+
+.section-title h2 {
+    color: var(--color-accent-purple); /* Section titles use a different accent color */
+    text-shadow: var(--text-glow-purple);
+}
+
+footer {
+    background-color: var(--color-background-dark);
+    color: var(--color-text-secondary);
+    text-align: center;
+    padding: calc(var(--spacing-unit) * 2) 0;
+    border-top: 1px solid rgba(208, 0, 255, 0.2); /* Subtle accent border at the top */
+    box-shadow: 0 -4px 15px rgba(208, 0, 255, 0.1); /* Subtle shadow for depth */
+    font-size: 0.9rem;
+    margin-top: auto; /* Push footer to the bottom if content is short */
+}
+
+/* --- Interactive Elements --- */
+.button {
+    display: inline-block; /* Allows setting width/height and vertical alignment */
+    background-color: var(--color-accent-green);
+    color: var(--color-background-dark); /* Dark text on bright button for contrast */
+    padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+    border: none; /* No default border */
+    border-radius: var(--border-radius-soft);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer; /* Indicate interactivity */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease; /* Smooth transitions */
+    box-shadow: var(--glow-green); /* Initial glow effect */
+    text-shadow: none; /* No text shadow on buttons for clarity */
+    letter-spacing: 0.05em;
+    text-decoration: none; /* Ensure buttons used as links are not underlined */
+}
+
+.button:hover,
+.button:focus {
+    background-color: var(--color-accent-blue); /* Change background color on hover */
+    color: var(--color-text-primary); /* Lighter text on hover */
+    box-shadow: var(--glow-blue); /* Change glow color */
+    outline: none; /* Remove default focus outline */
+}
+
+.button--secondary {
+    background-color: transparent; /* Transparent background for secondary button */
+    border: 2px solid var(--color-accent-blue); /* Accent border */
+    color: var(--color-accent-blue); /* Text color matches border */
+    box-shadow: var(--glow-blue); /* Blue glow */
+}
+
+.button--secondary:hover,
+.button--secondary:focus {
+    background-color: rgba(0, 240, 255, 0.1); /* Subtle fill on hover */
+    color: var(--color-text-primary);
+    box-shadow: var(--glow-purple); /* Change glow on hover/focus */
+    border-color: var(--color-accent-purple); /* Change border color on hover/focus */
+}
+
+/* --- Form Elements --- */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: var(--spacing-unit);
+    margin-bottom: var(--spacing-unit);
+    background-color: rgba(255, 255, 255, 0.05); /* Very subtle transparent background */
+    border: 1px solid var(--color-accent-blue);
+    border-radius: var(--border-radius-soft);
+    color: var(--color-text-primary);
+    font-family: 'Space Mono', monospace; /* Monospace for inputs for a tech feel */
+    font-size: var(--font-size-base);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    border-color: var(--color-accent-purple); /* Highlight border on focus */
+    box-shadow: 0 0 0 2px rgba(208, 0, 255, 0.3); /* Subtle outer glow on focus */
+    outline: none; /* Remove default focus outline */
+}
+
+label {
+    display: block; /* Ensures label appears on its own line */
+    margin-bottom: 0.5rem;
+    color: var(--color-text-secondary);
+    font-weight: bold;
+}
+
+/* --- Utility Classes --- */
+.text-center {
+    text-align: center;
+}
+
+.margin-top-large {
+    margin-top: calc(var(--spacing-unit) * 3);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    :root {
+        font-size: 15px; /* Slightly smaller base font size on smaller screens */
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .header-content {
+        flex-direction: column; /* Stack logo and nav vertically on smaller screens */
+        gap: var(--spacing-unit);
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column; /* Stack nav items vertically */
+        gap: calc(var(--spacing-unit) / 2); /* Smaller gap for stacked items */
+    }
+
+    nav a {
+        padding: 0.5rem 0; /* Adjust padding for stacked links */
+    }
+
+    nav a::after {
+        left: 50%; /* Center the underline for stacked items */
+        transform: translateX(-50%); /* Adjust transform to truly center */
+    }
+
+    nav a:hover::after,
+    nav a:focus::after {
+        width: 80%; /* Shorter underline for stacked items for better visual balance */
+    }
+
+    .container {
+        padding: 0 var(--spacing-unit); /* Less horizontal padding on small screens */
+    }
+
+    section {
+        margin-bottom: calc(var(--spacing-unit) * 2); /* Less margin between sections */
+        padding: calc(var(--spacing-unit) * 2) var(--spacing-unit); /* Adjusted padding */
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        font-size: 14px; /* Even smaller base font size on very small screens */
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    .logo {
+        font-size: 1.6rem;
+    }
+
+    .button {
+        width: 100%; /* Full width buttons on very small screens for easier tapping */
+        padding: var(--spacing-unit) 0.5rem; /* Adjusted padding */
+        margin-bottom: var(--spacing-unit); /* Add margin between stacked buttons */
+    }
+}
+
+/* --- Accessibility Enhancements --- */
+/* High-contrast focus states for all interactive elements, visible only for keyboard users */
+*:focus-visible {
+    outline: 2px solid var(--color-accent-purple); /* Solid outline for visibility */
+    outline-offset: 3px; /* Offset the outline from the element's border */
+    box-shadow: 0 0 0 5px rgba(208, 0, 255, 0.5); /* Stronger glow for keyboard focus */
+}
+
+/* Remove default outline for mouse users to keep custom focus styles via focus-visible */
+*:focus:not(:focus-visible) {
+    outline: none;
+}

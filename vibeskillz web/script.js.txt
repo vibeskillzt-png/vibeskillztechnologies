@@ -1,0 +1,9 @@
+// Vibeskillz Tech - shared site script
+
+// Auto-update footer copyright year on every page
+document.addEventListener('DOMContentLoaded', function () {
+    var yearEl = document.getElementById('currentYear');
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+    }
+});

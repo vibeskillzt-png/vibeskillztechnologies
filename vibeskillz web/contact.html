@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get in touch with Vibeskillz Tech. Email vibeskillzt@gmail.com or call +263 717452271.">
+    <title>Contact Us - Vibeskillz Tech</title>
+    <link rel="icon" href="logo.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Electrolize&family=Space+Mono:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">VIBESKILLZ</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="text-center">
+                <h1>Contact Us</h1>
+                <p>Tell us about your project and we'll get back to you shortly.</p>
+            </section>
+
+            <section>
+                <div class="section-title">
+                    <h2>Get In Touch</h2>
+                </div>
+                <p class="text-center">Email: <a href="mailto:vibeskillzt@gmail.com">vibeskillzt@gmail.com</a></p>
+                <p class="text-center">Phone / WhatsApp: <a href="tel:+263717452271">+263 717452271</a></p>
+            </section>
+
+            <section>
+                <div class="section-title">
+                    <h2>Send a Message</h2>
+                </div>
+                <form id="contact-form" action="mailto:vibeskillzt@gmail.com" method="post" enctype="text/plain">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="phone">Phone Number</label>
+                    <input type="text" id="phone" name="phone">
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+
+                    <button type="submit" class="button">Send Message</button>
+                </form>
+                <p id="form-note" style="margin-top: 1rem; font-size: 0.85rem;">Submitting opens your email app addressed to vibeskillzt@gmail.com. Prefer WhatsApp? Message us directly at +263 717452271.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Email: <a href="mailto:vibeskillzt@gmail.com">vibeskillzt@gmail.com</a> &nbsp;|&nbsp; Phone: <a href="tel:+263717452271">+263 717452271</a></p>
+            <p>&copy; <span id="currentYear"></span> Vibeskillz Tech. All rights reserved.</p>
+            <p><a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
